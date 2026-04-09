@@ -1,0 +1,36 @@
+main{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+#work-container{
+    display: flex;
+}
+
+h3{
+    font-family: 'Kusanagi';
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+h4{
+    font-weight: bolder;
+}
+
+#work-proj-container,
+#work-thumb-wrapper,
+#proj-thumb-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+#about-container{
+    display: flex;
+}
+
+.about{
+    width: 400px;
+    margin-bottom: 25px;
+}

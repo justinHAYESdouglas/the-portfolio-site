@@ -1,0 +1,27 @@
+#highlight-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 752px;
+    margin: 50px 0 0 271px
+}
+
+#highlight-title-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+#highlight-job-title{
+    font-weight: bolder;
+    font-size: 48px;
+}
+
+#highlight-job-name{
+    font-size: 36px;
+}
+
+#highlight-description-container{
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}

@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url('/Inter-Regular.otf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+body{
+  font-family: 'Inter-Regular';
+  color: var(--primary-text-color);
+  background-color: #FBFBFBFF;
+}
+
+:root{
+  --primary-text-color: #000;
+  --red-gradient: linear-gradient( to right, #EC2828, #D45917, #FFE602  ); 
+  --blue-gradient: linear-gradient(to right, #002DE1, #009CF0, #0277B7 );
+  --green-gradient: linear-gradient(to right, #28EC38, #17D472, #02FFF2 );
+
+  --adornment-height: 8px;
+}

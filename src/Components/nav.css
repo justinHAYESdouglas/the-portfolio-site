@@ -1,0 +1,14 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    gap: 75px;
+    transform: rotate(90deg);
+    position: fixed;
+    right: -90px;
+    top: 250px
+}
+
+nav a{
+    transform: rotate(180deg);
+    font-family: 'kusanagi';
+}
