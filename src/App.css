@@ -1,7 +1,13 @@
+#canvas-test {
+    position: relative;
+}
+
 main{
     display: flex;
     flex-direction: column;
     padding: 50px;
+    position: relative;
+    z-index: 1;
 }
 
 #work-container{
@@ -23,7 +29,11 @@ h4{
 #proj-thumb-wrapper{
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 30px;
+}
+
+#work-container{
+    height: 900px;
 }
 
 #about-container{

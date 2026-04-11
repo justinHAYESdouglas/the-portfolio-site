@@ -11,4 +11,6 @@ nav{
 nav a{
     transform: rotate(180deg);
     font-family: 'kusanagi';
+    color: var(--primary-text-color);
+    text-decoration: none;
 }
