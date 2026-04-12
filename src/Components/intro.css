@@ -135,7 +135,6 @@
 
 #name-wrapper{
   font-family: 'Kusanagi';
-  src: url('../public/Kusanagi.otf');
   font-size: 43px;
   font-weight: 100;
   filter: invert(100%);
