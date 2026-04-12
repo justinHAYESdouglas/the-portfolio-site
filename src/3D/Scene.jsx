@@ -8,18 +8,18 @@ const PAN_STRENGTH = 0.008;
 const RAD2DEG = THREE.MathUtils.RAD2DEG;
 const DEG2RAD = THREE.MathUtils.DEG2RAD;
 
-const SCROLL_DISTANCE = 400;
+const SCROLL_DISTANCE = 300;
 
 const KEYFRAME_START = {
   position: { x: 0, y: 2.52, z: 6.5 },
   rotationDeg: { x: 0, y: 0, z: 0 },
-  zoom: 0.9,
+  zoom: 1,
 };
 
 const KEYFRAME_END = {
-  position: { x: -3.7, y: 3.9, z: 8.5 },
+  position: { x: -3.7, y: 3.2, z: 8.5 },
   rotationDeg: { x: -3.2, y: -23.6, z: -1.3 },
-  zoom: 0.5,
+  zoom: 0.36,
 };
 
 function CameraController() {
@@ -265,8 +265,8 @@ export default function Scene() {
       >
         <Suspense fallback={null}>
           <Model />
-          <Environment preset="apartment" environmentIntensity={1} />
-          {/* <Environment preset="night" environmentIntensity={1} /> */}
+          {/* <Environment preset="apartment" environmentIntensity={1} /> */}
+          <Environment preset="night" environmentIntensity={1} />
           {/* <Environment preset="studio" environmentIntensity={1} /> */}
         </Suspense>
 

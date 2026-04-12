@@ -11,22 +11,26 @@ export default function Intro() {
           </div>
           <div id="intro-card-wrapper">
             <div id="top-adonrment-container">
-              <span id="top-1"></span>
-              <div className="red-bar">
-                <span className="red-bar-a"></span>
-                <span className="red-bar-b"></span>
+              <div id="top-1">
+                <span id="top-1a"></span>
               </div>
+              
+              <div className='top-2-bot-3'>
+                <span className='bar'></span>
+                <span className='star'>✦</span>
+              </div>
+
               <div id="top-3">
                 <span id="top-3a"></span>
                 <span id="top-3b"></span>
-                <span className="blue-diamond"></span>
-              </div>
-              <div id="top-4">
-                <span id="top-4a"></span>
-                <span className="green-circle"></span>
-                <span id="top-4c"></span>
+                <span id="top-3c">✦</span>
               </div>
 
+              <div className="top-4-bot-1">
+                <span id="top-4a"></span>
+                <span className='top-4b-bot-1b'>✦</span>
+                <span className='top-4c-bot1c'></span>
+              </div>
             </div>
             <div id="name-logo-title-wrapper">
               
@@ -46,18 +50,21 @@ export default function Intro() {
               
             </div>
             <div id="bot-adonrment-container">
-              <div id="bot-1">
+              <div className="top-4-bot-1">
                 <span id="bot-1a"></span>
-                <span className="green-circle"></span>
-                <span id="bot-1c"></span>
+                <span className='top-4b-bot-1b'>✦</span>
+                <span className='top-4c-bot1c'></span>
               </div>
+
               <div id="bot-2">
                 <span id="bot-2a"></span>
-                <span className="blue-diamond"></span>
+                <span id="bot-2b">✦</span>
               </div>
-              <div className="red-bar">
-                <span className="red-bar-a"></span>
-                <span className="red-bar-b"></span>
+
+
+               <div className='top-2-bot-3'>
+                <span className='bar'></span>
+                <span className='star'>✦</span>
               </div>
             </div>
           </div>

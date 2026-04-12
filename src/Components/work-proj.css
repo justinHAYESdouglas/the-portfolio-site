@@ -1,5 +1,8 @@
 .work-thumb,
 .project-thumb {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     padding: 3px 9px 3px 9px;
     position: relative;
     width: 220px;

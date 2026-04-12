@@ -1,10 +1,8 @@
 #highlight-container{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    position: absolute;
+    right: 430px;
+    top: 175px;
     width: 752px;
-    margin: 50px 0 0 271px;
-    color: black;
 }
 
 #highlight-title-wrapper{
@@ -25,4 +23,14 @@
     display: flex;
     flex-direction: column;
     gap: 45px;
+}
+
+@media (max-width: 1750px) {
+ #highlight-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: unset;
+    width: 350px;
+    }
 }

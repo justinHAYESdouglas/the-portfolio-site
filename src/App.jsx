@@ -75,19 +75,13 @@ function App() {
 
   return (
     <>
-      <div id='canvas-test'>
-      <Scene />
-      <Nav />
-      <Intro />
-      <main>
-        <div id="work-container">
-          <div className="down-arrow-wrapper">
-            <span className="arrow-shaft"></span>
-            <span className="arrow-head"></span>
-          </div>
-
-          <div id="work-proj-container">
-            <section id="work-thumb-container">
+      <div id="canvas-test">
+        <Scene />
+        <Nav />
+        <Intro />
+        <main>
+          <div id="work-proj-highlight-bar">
+            <section id="work-container">
               <h3>✦ Work</h3>
               <div id="work-thumb-wrapper">
                 {WORK_ITEMS.map((item) => (
@@ -96,14 +90,25 @@ function App() {
                     role={item.role}
                     companyName={item.companyName}
                     tenure={item.tenure}
-                    onSelect={() => setSelected({ title: item.role, subtitle: `@${item.companyName}`, tenure: item.tenure, description: item.description })}
+                    onSelect={() =>
+                      setSelected({
+                        title: item.role,
+                        subtitle: `@${item.companyName}`,
+                        tenure: item.tenure,
+                        description: item.description,
+                      })
+                    }
                     isSelected={selected?.subtitle === `@${item.companyName}`}
                   />
                 ))}
+                <div className="divider-wrapper">
+                  <span className="divider"></span>
+                  <span className="divider-point">✦</span>
+                </div>
               </div>
             </section>
 
-            <section id="proj-thumb-container">
+            <section id="proj-container">
               <h3>✦ Projects</h3>
               <div id="proj-thumb-wrapper">
                 {PROJECT_ITEMS.map((item) => (
@@ -111,32 +116,46 @@ function App() {
                     key={item.title}
                     title={item.title}
                     techUsed={item.techUsed}
-                    onSelect={() => setSelected({ title: item.title, subtitle: item.techUsed, description: item.description })}
+                    onSelect={() =>
+                      setSelected({
+                        title: item.title,
+                        subtitle: item.techUsed,
+                        description: item.description,
+                      })
+                    }
                     isSelected={selected?.title === item.title}
                   />
                 ))}
+                <div className="divider-wrapper">
+                  <span className="divider"></span>
+                  <span className="divider-point">✦</span>
+                </div>
               </div>
             </section>
+            <Highlight selected={selected} />
           </div>
-          <Highlight selected={selected} />
-        </div>
-        <section id="about-container">
-           <div className="down-arrow-wrapper">
-            <span className="arrow-shaft"></span>
-            <span className="arrow-head"></span>
-          </div>
-          <div id="about-wrapper">
-            <h3>✦ About</h3>
-            <p className="about"> Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to</p>
-             <p className="about"> Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to</p>
-            <h3>✦ Skills</h3>
-            <div id="skills-wrapper">
+
+          <div id="about-skill-bar">
+            <section id="about-wrapper">
+              <h3>✦ About</h3>
+              <p className="about">
+                {" "}
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to
+              </p>
+              <p className="about">
+                {" "}
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to
+              </p>
+            </section>
+
+            <section id="skill-wrapper">
+              <h3>✦ Skills</h3>
               <div className="skill-block">
                 <h4>Dev</h4>
                 <p>
@@ -148,35 +167,31 @@ function App() {
                 <h4>UX & Design</h4>
                 <p>
                   Design Systems, Figma, Adobe Illustrator, Adobe Photoshop,
-                   Responsive / Mobile Design, UI/UX, Wireframing, Usability Testing
+                  Responsive / Mobile Design, UI/UX, Wireframing, Usability
+                  Testing
                 </p>
               </div>
               <div className="skill-block">
                 <h4>Accessibility</h4>
                 <p>
-                  508 Compliance, WCAG Compliance,
-                  Screen reader testing workflows, Cross-browser accessibility testing
+                  508 Compliance, WCAG Compliance, Screen reader testing
+                  workflows, Cross-browser accessibility testing
                 </p>
               </div>
               <div className="skill-block">
                 <h4>3D Modeling</h4>
-                <p>
-                  Blender, Box Modeling, Texturing, Rigging, Animation,
-                </p>
+                <p>Blender, Box Modeling, Texturing, Rigging, Animation,</p>
               </div>
               <div className="skill-block">
                 <h4>Misc.</h4>
                 <p>
-                  2nd best cook in my house of two, Wordle, , Undefeated in 1v1 tetris,  
-                  AI Familiarity (Claude Code, Copilot, etc.)
+                  2nd best cook in my house of two, Wordle, , Undefeated in 1v1
+                  tetris, AI Familiarity (Claude Code, Copilot, etc.)
                 </p>
               </div>
-            </div>
+            </section>
           </div>
-          
-           
-        </section>
-      </main>
+        </main>
       </div>
     </>
   );

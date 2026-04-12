@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+   -ms-overflow-style: none;
+  scrollbar-width: none; 
 }
 
 @font-face {
@@ -13,7 +15,9 @@
 body{
   font-family: 'Inter-Regular';
   color: var(--primary-text-color);
-  background-color: #FBFBFBFF;
+  max-width: 1920px;
+  margin: auto;
+  background-color: #098ceb;
 }
 
 :root{
@@ -22,5 +26,9 @@ body{
   --blue-gradient: linear-gradient(to right, #002DE1, #009CF0, #0277B7 );
   --green-gradient: linear-gradient(to right, #28EC38, #17D472, #02FFF2 );
 
-  --adornment-height: 8px;
+  --adorn-red: #FE0000;
+  --adorn-blue: #8ed2f5;
+  --adornment-height: 12px;
+
+  --left-bar-color: #E8E5E4;  
 }
