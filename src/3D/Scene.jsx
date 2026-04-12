@@ -8,18 +8,32 @@ const PAN_STRENGTH = 0.008;
 const RAD2DEG = THREE.MathUtils.RAD2DEG;
 const DEG2RAD = THREE.MathUtils.DEG2RAD;
 
+const ZOOM_BREAKPOINTS = [
+  { maxWidth:  768, multiplier: 0.40 },
+  { maxWidth: 1280, multiplier: 0.85 },
+  { maxWidth: 1440, multiplier: 0.85 },
+  { maxWidth: 1920, multiplier: 0.85 },
+  { maxWidth: 2560, multiplier: 1.00 },
+  { maxWidth: 3440, multiplier: .5 },
+];
+
+function getZoomMultiplier(width) {
+  const bp = ZOOM_BREAKPOINTS.find((b) => width <= b.maxWidth);
+  return bp ? bp.multiplier : ZOOM_BREAKPOINTS[ZOOM_BREAKPOINTS.length - 1].multiplier;
+}
+
 const SCROLL_DISTANCE = 300;
 
 const KEYFRAME_START = {
   position: { x: 0, y: 2.52, z: 6.5 },
   rotationDeg: { x: 0, y: 0, z: 0 },
-  zoom: 1,
+  zoom: 1.2,
 };
 
 const KEYFRAME_END = {
-  position: { x: -3.7, y: 3.2, z: 8.5 },
+  position: { x: -3.7, y: 3.4, z: 8.5 },
   rotationDeg: { x: -3.2, y: -23.6, z: -1.3 },
-  zoom: 0.36,
+  zoom: 0.45,
 };
 
 function CameraController() {
@@ -57,7 +71,8 @@ function CameraController() {
     const rx = THREE.MathUtils.lerp(KEYFRAME_START.rotationDeg.x, KEYFRAME_END.rotationDeg.x, t) * DEG2RAD;
     const ry = THREE.MathUtils.lerp(KEYFRAME_START.rotationDeg.y, KEYFRAME_END.rotationDeg.y, t) * DEG2RAD;
     const rz = THREE.MathUtils.lerp(KEYFRAME_START.rotationDeg.z, KEYFRAME_END.rotationDeg.z, t) * DEG2RAD;
-    const zoom = THREE.MathUtils.lerp(KEYFRAME_START.zoom, KEYFRAME_END.zoom, t);
+    const zoomBase = THREE.MathUtils.lerp(KEYFRAME_START.zoom, KEYFRAME_END.zoom, t);
+    const zoom = zoomBase * getZoomMultiplier(state.size.width);
 
     cam.position.set(px, py, pz);
     cam.rotation.set(rx, ry + panOffset.current, rz);
@@ -255,7 +270,7 @@ export default function Scene() {
           pointerEvents: "none",
           zIndex: -1
         }}
-        shadows
+        shadows={{ type: THREE.PCFShadowMap }}
         gl={{
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1,

@@ -6,6 +6,7 @@ main{
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 100%;
     z-index: 1;
 }
 
@@ -13,26 +14,45 @@ main{
 #about-skill-bar{
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    width: 350px;
+    width: 20vw;
     height: 900px;
     background-color: var(--left-bar-color);
     box-shadow: 6px 2px 0px -2px rgba(0, 0, 0, 0.25);
 }
 
+#about-skill-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#about-wrapper,
+#skill-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 50%;
+    padding: 20px 60px 20px 60px;
+}
+
+.about, .skill-block p{
+    font-size: 1.2em;
+}
+
 #work-proj-highlight-bar{
-    border-top-right-radius: 150px;
+    border-top-right-radius: 100px;
 }
 
 h3{
     font-family: 'Kusanagi';
-    font-size: 25px;
+    font-size: 1.55em;
     margin-bottom: 20px;
 }
 
 h4{
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 1.3em;
 }
 
 #work-container,
@@ -46,7 +66,7 @@ h4{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    font-size: 18px;
+    font-size: 1em;
 }
 
 .divider-wrapper{
@@ -68,8 +88,32 @@ h4{
     bottom: 1px;
 }
 
-@media (max-width: 1750px) {
+@media (max-width: 1120px) {
+    
+    #work-proj-highlight-bar,
+    #about-skill-bar{
+        width: 100vw;
+        opacity: .8;
+    }
+    
     #work-proj-highlight-bar{
         height: auto;
     }
+
+
+    #about-skill-bar{
+    flex-direction: column;
+    margin: auto;
+}
+
+    #about-wrapper,
+    #skill-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 90%;
+    padding: 15px;
+    }
+
+    
 }

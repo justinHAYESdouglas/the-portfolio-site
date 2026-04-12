@@ -15,9 +15,9 @@
 body{
   font-family: 'Inter-Regular';
   color: var(--primary-text-color);
-  max-width: 1920px;
+  max-width: 2326px;
+  max-height: 1440px;
   margin: auto;
-  background-color: #098ceb;
 }
 
 :root{

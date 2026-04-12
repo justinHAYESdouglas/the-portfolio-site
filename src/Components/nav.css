@@ -1,16 +1,59 @@
 nav{
     display: flex;
     flex-direction: row;
-    gap: 75px;
+    width: 90vh;
     transform: rotate(90deg);
     position: fixed;
-    right: -90px;
-    top: 250px
+    right: -20vw;
+    top: 45vh;
+    z-index: 10;
+    filter: invert(100%);
+    mix-blend-mode: difference;
+    justify-content: space-between;
 }
 
-nav a{
+nav a, nav div a{
     transform: rotate(180deg);
     font-family: 'kusanagi';
-    color: var(--primary-text-color);
     text-decoration: none;
+    color: unset;
+}
+
+#internal-links,
+#external-links{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+#home-link{
+    font-size: 24px;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+@media (max-width: 1120px) {
+    nav{
+        transform: unset;
+        justify-content: space-around;
+        top: 0;
+        right: 0vw;
+        width: 100%;
+        background-color: var(--primary-text-color);
+        filter: unset;
+        mix-blend-mode: unset;
+        color: #fff;
+    }
+
+    nav a, nav div a{
+        transform: unset;
+    }
+
+    #internal-links,
+    #external-links{
+        gap: 25px;
+    }
 }

@@ -5,9 +5,19 @@ export default function Highlight({ selected }) {
     <>
       <section id="highlight-container">
         <div id="highlight-title-wrapper">
-          <h5 id="highlight-job-title">{selected?.title ?? 'Job Title'}</h5>
+          <h5 id="highlight-job-title">
+            {selected?.url && !selected?.tenure
+              ? <a href={selected.url} target="_blank" rel="noreferrer">{selected.title ?? 'Job Title'}</a>
+              : (selected?.title ?? 'Job Title')
+            }
+          </h5>
           <div id="highlight-job-tenure-container">
-            <p id="highlight-job-name">{selected?.subtitle ?? '@Job Name'}</p>
+            <p id="highlight-job-name">
+              {selected?.url && selected?.tenure
+                ? <a href={selected.url} target="_blank" rel="noreferrer">{selected.subtitle ?? '@Job Name'}</a>
+                : (selected?.subtitle ?? '@Job Name')
+              }
+            </p>
             {selected?.tenure && <p id="highlight-tenure">{selected.tenure}</p>}
           </div>
         </div>

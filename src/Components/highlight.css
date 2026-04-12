@@ -1,36 +1,46 @@
 #highlight-container{
-    position: absolute;
-    right: 430px;
-    top: 175px;
-    width: 752px;
+  position: absolute;
+  top: 14%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 45vw;
 }
 
 #highlight-title-wrapper{
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 #highlight-job-title{
     font-weight: bolder;
-    font-size: 48px;
+    font-size: 2em;
 }
 
 #highlight-job-name{
-    font-size: 36px;
+    font-size: 1.5em;
 }
 
 #highlight-description-container{
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    gap: 25px;
 }
 
-@media (max-width: 1750px) {
+#highlight-description-container p::before{
+    content: "\2022"; 
+    padding-right: 8px;
+}
+
+@media (max-width: 1120px) {
  #highlight-container{
+    position: unset;
+    transform: unset;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    position: unset;
-    width: 350px;
+    width: 80%;
+    padding: 30px;
+    margin: auto;
     }
 }

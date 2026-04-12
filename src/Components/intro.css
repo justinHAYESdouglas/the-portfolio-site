@@ -1,12 +1,12 @@
 #intro-container{
-    padding:50px;
     height: 975px;
-
+   
 }
 
 #intro-wrapper{
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 #intro-card-wrapper{
@@ -16,17 +16,7 @@
     gap: 30px;
 }
 
-#name-logo-title-wrapper{
-    display: flex;
-    flex-direction: row;
-}
 
-.down-arrow-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 32px;
-}
 /* ADORNMENT STYLES */
 
 #top-adonrment-container, 
@@ -112,10 +102,19 @@
 /* ADORNMENT STYLES END */
 
 /* Move to index */
+
+.down-arrow-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 32px 0 32px;
+}
+
 .arrow-shaft{
     display: flex;
+    margin-top: 100px;
     width: 4px;
-    height: 612px;
+    height: 70%;
     background: var(--primary-text-color);
 }
 
@@ -158,4 +157,36 @@
 #name-wrapper{
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 1120px) {
+
+    #intro-container{
+       height: 975px;
+       background: #fff;
+   
+    }
+    
+    #intro-card-wrapper{
+        margin: auto;
+    }
+
+     .down-arrow-wrapper{
+        display: none;
+    }
+
+    #top-adonrment-container, 
+    #bot-adonrment-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #top-3b{
+        width: 275px;
+    }
+
+    #bot-2a{
+        width: 470px;
+    }
+
 }
