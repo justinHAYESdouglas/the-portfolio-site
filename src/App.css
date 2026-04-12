@@ -93,7 +93,7 @@ h4{
     #work-proj-highlight-bar,
     #about-skill-bar{
         width: 100vw;
-        opacity: .8;
+        background-color: rgba(232, 229, 228, .5);
     }
     
     #work-proj-highlight-bar{

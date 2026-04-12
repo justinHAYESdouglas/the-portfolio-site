@@ -90,6 +90,20 @@ function App() {
     description: WORK_ITEMS[0].description,
   });
 
+  const selectAndMaybeScrollToHighlight = (nextSelected) => {
+    setSelected(nextSelected);
+
+    if (window.innerWidth <= 1120) {
+      requestAnimationFrame(() => {
+        const highlightEl = document.getElementById("highlight-job-title");
+        if (highlightEl) {
+          const top = highlightEl.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      });
+    }
+  };
+
   return (
     <>
       <div id="canvas-test">
@@ -108,7 +122,7 @@ function App() {
                     companyName={item.companyName}
                     tenure={item.tenure}
                     onSelect={() =>
-                      setSelected({
+                      selectAndMaybeScrollToHighlight({
                         title: item.role,
                         subtitle: `@${item.companyName}`,
                         tenure: item.tenure,
@@ -135,7 +149,7 @@ function App() {
                     title={item.title}
                     techUsed={item.techUsed}
                     onSelect={() =>
-                      setSelected({
+                      selectAndMaybeScrollToHighlight({
                         title: item.title,
                         subtitle: item.techUsed,
                         url: item.url,

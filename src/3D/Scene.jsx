@@ -278,12 +278,8 @@ export default function Scene() {
           useLegacyLights: false,
         }}
       >
-        <Suspense fallback={null}>
           <Model />
-          {/* <Environment preset="apartment" environmentIntensity={1} /> */}
           <Environment preset="night" environmentIntensity={1} />
-          {/* <Environment preset="studio" environmentIntensity={1} /> */}
-        </Suspense>
 
         <CameraController />
         <CameraTracker domRef={camDisplayRef} />

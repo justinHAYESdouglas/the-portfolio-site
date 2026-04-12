@@ -163,7 +163,7 @@
     #intro-container{
        height: 975px;
        background: #fff;
-   
+       border-bottom-right-radius: 100px;
     }
     
     #intro-card-wrapper{
@@ -176,16 +176,14 @@
 
     #top-adonrment-container, 
     #bot-adonrment-container{
-        display: flex;
+        display: none;
         flex-direction: column;
     }
 
-    #top-3b{
-        width: 275px;
-    }
-
-    #bot-2a{
-        width: 470px;
+   #name-title-container{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
     }
 
 }
