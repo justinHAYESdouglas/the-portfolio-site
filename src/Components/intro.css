@@ -16,7 +16,6 @@
     gap: 30px;
 }
 
-
 /* ADORNMENT STYLES */
 
 #top-adonrment-container, 
@@ -101,8 +100,6 @@
 
 /* ADORNMENT STYLES END */
 
-/* Move to index */
-
 .down-arrow-wrapper{
     display: flex;
     flex-direction: column;
@@ -148,6 +145,9 @@
 #title-wrapper{
     padding-top: 5px;
     font-weight: 100;
+    font-size: 1.2em;
+    filter: invert(100%);
+    mix-blend-mode: difference;
 }
 
 #logo-wrapper{

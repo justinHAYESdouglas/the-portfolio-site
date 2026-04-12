@@ -18,6 +18,7 @@ body{
   max-width: 2326px;
   max-height: 1440px;
   margin: auto;
+  background-color: #fff;
 }
 
 :root{

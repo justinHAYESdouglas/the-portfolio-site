@@ -33,10 +33,6 @@ export default function Intro() {
               </div>
             </div>
             <div id="name-logo-title-wrapper">
-              
-              <div id="logo-wrapper">
-                <span className="logo-icon" role="img" aria-label="Justin Hayes Douglas Logo" title="Hire me!"></span>
-              </div>
               <div id="name-title-container">
                 <h1 id="name-wrapper">
                 <span>Justin</span>
@@ -44,7 +40,7 @@ export default function Intro() {
               </h1>
 
               <h2 id="title-wrapper">
-                UI/UX | Engineer
+                UI/UX | Frontend Engineer | Designer
               </h2>
               </div>
               

@@ -50,6 +50,8 @@ const PROJECT_ITEMS = [
   {
     title: "Enterprise Bulk User Editor",
     techUsed: "React, TypeScript, MUI, CSS",
+    url: "https://justinhayesdouglas.github.io/bulk-user-ui/",
+    repoUrl: "https://github.com/justinHAYESdouglas/bulk-user-ui",
     description: [
       "A responsive, accessibility-first user management system with full keyboard navigation, ARIA refinements, and screen-reader support keeping core workflows usable across screen sizes.",
       "Supports bulk operations (add, replace, remove), advanced lifecycle controls (archive/restore, password resets), and safety features like hold-to-confirm deletion to prevent errors at scale.",
@@ -60,9 +62,11 @@ const PROJECT_ITEMS = [
     title: "Covid Conscious",
     techUsed: "jQuery, HTML, CSS",
     url: "https://covidconscious.herokuapp.com/",
+    repoUrl: "https://github.com/justinHAYESdouglas/CovidConcious",
     description: [
-      "A community resource site built during the pandemic to surface local testing locations, safety guidelines, and mental health resources.",
-      "Focused on accessibility and low-bandwidth performance for users on mobile or slow connections.",
+      "A responsive, accessible COVID stats dashboard using the COVID Act Now API, surfacing real-time case data organized by state to help users make informed decisions about stateside travel during the pandemic.",
+      "Features a clean, intuitive design that keeps complex health data digestible at a glance, with a minimal layout, clear visual hierarchy, and full keyboard and screen-reader support.",
+      "Built with progressive enhancement in mind, ensuring a smooth experience on both mobile and desktop without sacrificing performance or usability.",
     ],
   },
   {
@@ -135,6 +139,7 @@ function App() {
                         title: item.title,
                         subtitle: item.techUsed,
                         url: item.url,
+                        repoUrl: item.repoUrl,
                         description: item.description,
                       })
                     }

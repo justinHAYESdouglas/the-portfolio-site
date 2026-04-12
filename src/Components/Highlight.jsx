@@ -33,6 +33,9 @@ export default function Highlight({ selected }) {
               </>
             )
           }
+          {selected?.repoUrl && (
+            <a href={selected.repoUrl} target="_blank" rel="noreferrer" id="highlight-repo-link">View Repo</a>
+          )}
         </div>
       </section>
     </>
