@@ -24,6 +24,11 @@
     flex-direction: column;
 }
 
+#top-adonrment-container span, 
+#bot-adonrment-container span{
+    border-radius: 28px;
+}
+
 #top-1a{
     display: block;
     width: 312px;
@@ -74,6 +79,7 @@
     width: 250px;
     height: var(--adornment-height);
     border: 1px solid var(--primary-text-color);
+    background: var(--flag-extra-color)
 }
 
 .top-4b-bot-1b{
@@ -86,6 +92,7 @@
      width: 105px;
     height: var(--adornment-height);
     border: 1px solid var(--primary-text-color);
+    background: var(--flag-extra-color)
 }
 
 #bot-1a{

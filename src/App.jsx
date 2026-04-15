@@ -12,6 +12,7 @@ const WORK_ITEMS = [
     role: "UI/UX Engineer",
     companyName: "Vertical Knowledge -> Babel Street",
     tenure: "2022-2026",
+    screenMaterial: "vk_babel_work",
     url: "https://www.babelstreet.com/about-us?utm_source=Direct&utm_medium=Direct&utm_campaign=Not+Provided",
     description: [
       "Lead migration of enterprise-level managed attribution platform from jQuery to React + TypeScript, improving maintainability and performance for 1,000+ users across multiple organizations.",
@@ -24,6 +25,7 @@ const WORK_ITEMS = [
     role: "Frontend Developer",
     companyName: "Realnets",
     tenure: "2021-2022",
+    screenMaterial: "realnets_work",
     url: "https://realnets.com/",
     description: [
       "Designed and developed responsive frontends for web and mobile apps, including a boutique hotel management system.",
@@ -36,6 +38,7 @@ const WORK_ITEMS = [
     role: "Web Developer",
     companyName: "Wilbur Wright College",
     tenure: "2020-2021",
+    screenMaterial: "wright_college_work",
     url: "https://www.ccc.edu/wright/home/",
     description: [
       "Developed and maintained the college's public-facing web presence, including event pages, department sites, and student resource portals.",
@@ -50,33 +53,38 @@ const PROJECT_ITEMS = [
   {
     title: "Enterprise Bulk User Editor",
     techUsed: "React, TypeScript, MUI, CSS",
+    screenMaterial: "ebue_proj",
     url: "https://justinhayesdouglas.github.io/bulk-user-ui/",
     repoUrl: "https://github.com/justinHAYESdouglas/bulk-user-ui",
     description: [
       "A responsive, accessibility-first user management system with full keyboard navigation, ARIA refinements, and screen-reader support keeping core workflows usable across screen sizes.",
-      "Supports bulk operations (add, replace, remove), advanced lifecycle controls (archive/restore, password resets), and safety features like hold-to-confirm deletion to prevent errors at scale.",
+      "Supports bulk operations (add, replace, remove), advanced life cycle controls (archive/restore, password resets), and safety features like hold-to-confirm deletion to prevent errors at scale.",
       "Built on a reusable modal architecture with inline validation, progressive workflows, and fast search/filtering all within a consistent dark-themed design system.",
     ],
   },
   {
-    title: "Covid Conscious",
+    title: "Covid Concious",
     techUsed: "jQuery, HTML, CSS",
+    screenMaterial: "covid_proj",
     url: "https://covidconscious.herokuapp.com/",
     repoUrl: "https://github.com/justinHAYESdouglas/CovidConcious",
     description: [
-      "A responsive, accessible COVID stats dashboard using the COVID Act Now API, surfacing real-time case data organized by state to help users make informed decisions about stateside travel during the pandemic.",
-      "Features a clean, intuitive design that keeps complex health data digestible at a glance, with a minimal layout, clear visual hierarchy, and full keyboard and screen-reader support.",
-      "Built with progressive enhancement in mind, ensuring a smooth experience on both mobile and desktop without sacrificing performance or usability.",
+      "An accessible, easy to use, and responsive COVID stats dashboard using the COVID Act Now API, serving real-time case data organized by state.",
+      "On the frontend, jQuery is used to make asynchronous AJAX requests, allowing the UI to dynamically fetch and update data without requiring full page reloads.",
     ],
   },
   {
     title: "Portfolio Site",
     techUsed: "React, Three.js, CSS, Blender",
+    screenMaterial: "portfolio_proj",
     url: "https://github.com/justinHAYESdouglas/the-portfolio-site",
+    repoUrl: [
+
+    ],
     description: [
-      "A fully custom 3D portfolio built with React Three Fiber and a hand-modeled, rigged Blender scene exported as a GLB complete with a character (Craig) that punches on loop and falls over when you click him.",
-      "Features scroll-driven camera animation with smooth keyframe interpolation, mouse parallax panning, and NDC-to-screen-space projection for pixel-accurate hover detection on a 3D character.",
-      "Physically-based rendering with ACES filmic tone mapping, PCF shadow mapping, HDR environment lighting, and a responsive zoom system that scales across resolutions from mobile to ultrawide.",
+      "My fully custom 3D portfolio built with React and  and Three.js with models created in and exported from Blender!",
+      "Features include ,scroll-driven camera animation with smooth keyframe interpolation, mouse parallax panning, and NDC-to-screen-space projection for pixel-accurate hover detection on a 3D character as well as character animation.",
+      "Physically-based rendering with ACES filmic tone mapping, PCF shadow mapping, HDR environment lighting, and a responsive zoom system.",
     ],
   },
 ];
@@ -87,27 +95,18 @@ function App() {
     subtitle: `@${WORK_ITEMS[0].companyName}`,
     tenure: WORK_ITEMS[0].tenure,
     url: WORK_ITEMS[0].url,
+    screenMaterial: WORK_ITEMS[0].screenMaterial,
     description: WORK_ITEMS[0].description,
   });
 
   const selectAndMaybeScrollToHighlight = (nextSelected) => {
     setSelected(nextSelected);
-
-    if (window.innerWidth <= 1120) {
-      requestAnimationFrame(() => {
-        const highlightEl = document.getElementById("highlight-job-title");
-        if (highlightEl) {
-          const top = highlightEl.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      });
-    }
   };
 
   return (
     <>
       <div id="canvas-test">
-        <Scene />
+        <Scene screenMaterial={selected?.screenMaterial} />
         <Nav />
         <Intro />
         <main>
@@ -121,12 +120,14 @@ function App() {
                     role={item.role}
                     companyName={item.companyName}
                     tenure={item.tenure}
+                    url={item.url}
                     onSelect={() =>
                       selectAndMaybeScrollToHighlight({
                         title: item.role,
                         subtitle: `@${item.companyName}`,
                         tenure: item.tenure,
                         url: item.url,
+                        screenMaterial: item.screenMaterial,
                         description: item.description,
                       })
                     }
@@ -148,12 +149,15 @@ function App() {
                     key={item.title}
                     title={item.title}
                     techUsed={item.techUsed}
+                    url={item.url}
+                    repoUrl={item.repoUrl}
                     onSelect={() =>
                       selectAndMaybeScrollToHighlight({
                         title: item.title,
                         subtitle: item.techUsed,
                         url: item.url,
                         repoUrl: item.repoUrl,
+                        screenMaterial: item.screenMaterial,
                         description: item.description,
                       })
                     }
@@ -165,6 +169,9 @@ function App() {
                   <span className="divider-point">✦</span>
                 </div>
               </div>
+              <svg id="border-finish" viewBox="0 0 100 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 0 Q 50 50 100 0 L 50 50 Z" fill="#dcd4d1" />
+              </svg>
             </section>
             <Highlight selected={selected} />
           </div>
@@ -175,17 +182,19 @@ function App() {
               
               <p className="about">
                 {" "}
-                Did you know that there are blend modes in CSS? I can't believe it!
-                 If you don't know what "blend modes" are, the short answers that they're tools that determine the way the pixels of an image or layer will interact with what's underneath it. I'm using them to invert colors on my name at the top of the site so that
-                 it remains readable no matter color the background is. Anyway,
+                Did you know that there are blend modes in CSS? I couldn't believe it!
+                 If you don't know what blend modes are, the short answers that they're 
+                 tools that determine the way the pixels of an image will interact with what's underneath it. 
+                 I'm using them to invert colors on my name and the navagation so that
+                 they remain readable no matter what the color of the background is. Anyway,
               </p>
 
               <p className="about">
-               Hello! My name's Justin. <a href="/justin_hd_resume2026.pdf" id="resume-link" title="hire me!" target="_blank">Here's my resume</a>
+               Hello! I'm Justin. <a href="/justin_hd_resume2026.pdf" id="resume-link" title="hire me!" target="_blank">Here's my resume</a>
               </p>
 
               <p className="about">  I'm a Chicago based UI/UX programmer, designer, frontend developer, and 3d artist.
-                 I love everything there is to do with the frontend. I work end-to-end, from research and wireframes to 
+                I work end-to-end, from research and wireframes to 
                 polished UI and production-ready code. I'm also passionate about both useability and accessibility, making 
                 sure that whatever I make can be easily used and enjoyed by anyone.</p>
 
@@ -197,8 +206,8 @@ function App() {
               <div className="skill-block">
                 <h4>Dev</h4>
                 <p>
-                  React, JavaScript, TypeScript, Three.js, HTML, CSS, SCSS,
-                  jQuery, MUI, Redux / Redux Toolkit, REST APIs, CI/CD Pipelines
+                  React, Angular, JavaScript, TypeScript, Three.js, HTML, CSS, SCSS,
+                  jQuery, MUI, Next.js, Node.js, Redux / Redux Toolkit, REST APIs, CI/CD Pipelines
                 </p>
               </div>
               <div className="skill-block">

@@ -20,6 +20,17 @@ main{
     box-shadow: 6px 2px 0px -2px rgba(0, 0, 0, 0.25);
 }
 
+#border-finish {
+    display: block;
+    position: absolute;
+    right: -81px;
+    bottom: 8px;
+    width: 120px;
+    height: 60px;
+    color: var(--primary-text-color);
+    transform: rotate(45deg);
+}
+
 #about-skill-bar{
     display: flex;
     flex-direction: row;
@@ -60,6 +71,11 @@ h4{
     margin: 25px 0 0 25px;
 }
 
+#proj-container{
+    position: relative;
+    padding-bottom: 70px;
+}
+
 
 #work-thumb-wrapper,
 #proj-thumb-wrapper{
@@ -77,7 +93,7 @@ h4{
 }
 
 .divider{
-    width: 100%;
+    width: 85%;
     height: 4px;
     background-color: var(--primary-text-color);
 }
@@ -93,7 +109,7 @@ h4{
     #work-proj-highlight-bar,
     #about-skill-bar{
         width: 100vw;
-        background-color: rgba(232, 229, 228, .5);
+        background-color: rgba(0, 0, 0, .72);
     }
     
     #work-proj-highlight-bar{
@@ -104,7 +120,7 @@ h4{
     #about-skill-bar{
     flex-direction: column;
     margin: auto;
-}
+    }
 
     #about-wrapper,
     #skill-wrapper{
@@ -113,7 +129,41 @@ h4{
     gap: 24px;
     width: 90%;
     padding: 15px;
+    color: var(--flag-extra-color);
     }
 
-    
+    #border-finish{
+        display: none;
+    }
+
+    .divider-point{
+        display: none;
+    }
+
+    #work-container,
+    #proj-container{
+        margin: 0;
+        padding: 25px;
+
+    }
+
+     #work-container h3,
+     #proj-container h3{
+        border-bottom: 1px solid var(--flag-extra-color);
+    }
+
+      #work-thumb-wrapper,
+      #proj-thumb-wrapper{
+        font-size: .7em;
+    }
+
+    #work-thumb-wrapper,
+    #proj-thumb-wrapper,
+    #work-container h3,
+    #proj-container h3{
+        flex-direction: row;
+        padding-bottom: 12px;
+        color: var(--flag-extra-color)
+    }
+
 }

@@ -1,5 +1,5 @@
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment } from "@react-three/drei"; // ✅ added Environment
+import { useGLTF, Environment } from "@react-three/drei"; 
 import { Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 import modelUrl from "./portfolio-scene.glb?url";
@@ -97,8 +97,8 @@ function CameraTracker({ domRef }) {
   return null;
 }
 
-function Model() {
-  const { scene, cameras, animations } = useGLTF(modelUrl);
+function Model({ screenMaterial }) {
+  const { scene, cameras, animations, materials } = useGLTF(modelUrl);
   const { set, size } = useThree();
   const sizeRef = useRef(size);
   useEffect(() => { sizeRef.current = size; }, [size]);
@@ -110,10 +110,39 @@ function Model() {
   const mouseScreen = useRef(new THREE.Vector2());
   const isHovered = useRef(false);
   const hasClickedRef = useRef(false);
+  const screenMeshRef = useRef(null);
+  const originalScreenMaterialRef = useRef(null);
+  const screenMaterialRef = useRef(screenMaterial);
+  const materialsRef = useRef(materials);
+  const hasScrolledRef = useRef(window.scrollY >= SCROLL_DISTANCE);
+  const screenTransitionRef = useRef({ progress: 1, clonedMat: null, finalMat: null });
+  const prevScreenMaterialRef = useRef(screenMaterial);
   // How many px from Craig's projected center counts as hover
   const HOVER_RADIUS_PX = 80;
 
+  useEffect(() => { materialsRef.current = materials; }, [materials]);
+
+  const applyCurrentScreenMaterial = (skipFade = false) => {
+    const mesh = screenMeshRef.current;
+    if (!mesh) return;
+    const mats = materialsRef.current;
+    const targetMat = !hasScrolledRef.current
+      ? (mats["blank_screen"] ?? originalScreenMaterialRef.current)
+      : (() => { const m = screenMaterialRef.current; return (m && mats[m]) ? mats[m] : originalScreenMaterialRef.current; })();
+    if (skipFade) {
+      mesh.material = targetMat;
+      screenTransitionRef.current = { progress: 1, clonedMat: null, finalMat: targetMat };
+      return;
+    }
+    const cloned = targetMat.clone();
+    cloned.transparent = true;
+    cloned.opacity = 0;
+    mesh.material = cloned;
+    screenTransitionRef.current = { progress: 0, clonedMat: cloned, finalMat: targetMat };
+  };
+
   useEffect(() => {
+    document.body.style.backgroundColor = "#110b0b";
     const cam = cameras.find((c) => c.name === "full-work");
     if (cam) {
       cam.zoom = KEYFRAME_START.zoom;
@@ -154,6 +183,21 @@ function Model() {
       });
     }
 
+    // Find screen mesh for material swapping
+    const screenMesh = scene.getObjectByName("screen");
+    if (screenMesh?.isMesh) {
+      screenMeshRef.current = screenMesh;
+      originalScreenMaterialRef.current = screenMesh.material;
+      applyCurrentScreenMaterial(true);
+    }
+
+    // Debug: log all mesh names and available materials
+    console.log("[Scene] All materials from GLB:", Object.keys(materials));
+    const meshNames = [];
+    scene.traverse((obj) => { if (obj.isMesh) meshNames.push(obj.name); });
+    console.log("[Scene] All mesh names in scene:", meshNames);
+    console.log("[Scene] Screen mesh found:", screenMesh);
+
     // Set up mixer and play initial animation
     const rig = scene.getObjectByName("rig");
     const target = rig ?? craig ?? scene;
@@ -171,6 +215,14 @@ function Model() {
     const handleMouseMove = (e) => {
       mouseScreen.current.x = e.clientX;
       mouseScreen.current.y = e.clientY;
+    };
+
+    const handleScroll = () => {
+      const past = window.scrollY >= SCROLL_DISTANCE;
+      if (past !== hasScrolledRef.current) {
+        hasScrolledRef.current = past;
+        applyCurrentScreenMaterial();
+      }
     };
 
     const handleClick = () => {
@@ -193,10 +245,12 @@ function Model() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("click", handleClick);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("click", handleClick);
       document.body.style.cursor = "";
       mixerRef.current?.stopAllAction();
@@ -205,7 +259,24 @@ function Model() {
   }, [cameras, set, scene, animations]);
 
   useFrame((state, delta) => {
+    // Detect screenMaterial prop changes (avoids effect ordering issues on mount)
+    if (screenMaterial !== prevScreenMaterialRef.current) {
+      prevScreenMaterialRef.current = screenMaterial;
+      screenMaterialRef.current = screenMaterial;
+      applyCurrentScreenMaterial();
+    }
+
     mixerRef.current?.update(delta);
+
+    // Screen fade-in transition
+    const tr = screenTransitionRef.current;
+    if (tr.progress < 1 && tr.clonedMat) {
+      tr.progress = Math.min(tr.progress + delta * 0.6, 1);
+      tr.clonedMat.opacity = tr.progress;
+      if (tr.progress >= 1 && screenMeshRef.current) {
+        screenMeshRef.current.material = tr.finalMat;
+      }
+    }
 
     if (!craigRootRef.current) return;
 
@@ -236,7 +307,7 @@ function Model() {
   return <primitive object={scene} />;
 }
 
-export default function Scene() {
+export default function Scene({ screenMaterial }) {
   const camDisplayRef = useRef(null);
 
   return (
@@ -278,7 +349,7 @@ export default function Scene() {
           useLegacyLights: false,
         }}
       >
-          <Model />
+          <Model screenMaterial={screenMaterial} />
           <Environment preset="night" environmentIntensity={1} />
 
         <CameraController />
