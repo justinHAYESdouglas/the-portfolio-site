@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+   -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @font-face {
@@ -10,17 +12,44 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Kusanagi';
+  src: url('/Kusanagi.otf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
 body{
   font-family: 'Inter-Regular';
   color: var(--primary-text-color);
-  background-color: #FBFBFBFF;
+  /* max-width: 2326px;
+  max-height: 1440px; */
+  margin: auto;
+  background-color: #fff;
+}
+
+a, a:visited{
+  color: var(--primary-text-color);
+}
+
+ main a::after {
+    content: " ↗";
+    font-style: normal;
 }
 
 :root{
   --primary-text-color: #000;
-  --red-gradient: linear-gradient( to right, #EC2828, #D45917, #FFE602  ); 
-  --blue-gradient: linear-gradient(to right, #002DE1, #009CF0, #0277B7 );
-  --green-gradient: linear-gradient(to right, #28EC38, #17D472, #02FFF2 );
+  
+  --flag-extra-color: #fff;
+  --adorn-red: #FE0000;
+  --adorn-blue: #8ed2f5;
+  --adornment-height: 12px;
 
-  --adornment-height: 8px;
+  --left-bar-color: #dcd4d1 ;  
+}
+
+@media (max-width: 1120px) {
+  a, a:visited{
+  color: var( --flag-extra-color);
+}
 }

@@ -1,36 +1,169 @@
+#canvas-test {
+    position: relative;
+}
+
 main{
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
 }
 
-#work-container{
+#work-proj-highlight-bar,
+#about-skill-bar{
     display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: 900px;
+    background-color: var(--left-bar-color);
+    box-shadow: 6px 2px 0px -2px rgba(0, 0, 0, 0.25);
+}
+
+#border-finish {
+    display: block;
+    position: absolute;
+    right: -81px;
+    bottom: 8px;
+    width: 120px;
+    height: 60px;
+    color: var(--primary-text-color);
+    transform: rotate(45deg);
+}
+
+#about-skill-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#about-wrapper,
+#skill-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 50%;
+    padding: 20px 60px 20px 60px;
+}
+
+.about, .skill-block p{
+    font-size: 1.2em;
+}
+
+#work-proj-highlight-bar{
+    border-top-right-radius: 100px;
 }
 
 h3{
     font-family: 'Kusanagi';
-    font-size: 25px;
-    margin-bottom: 25px;
+    font-size: 1.55em;
+    margin-bottom: 20px;
 }
 
 h4{
     font-weight: bolder;
+    font-size: 1.3em;
 }
 
-#work-proj-container,
+#work-container,
+#proj-container{
+    margin: 25px 0 0 25px;
+}
+
+#proj-container{
+    position: relative;
+    padding-bottom: 70px;
+}
+
+
 #work-thumb-wrapper,
 #proj-thumb-wrapper{
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 20px;
+    font-size: 1em;
 }
 
-#about-container{
+.divider-wrapper{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 25px;
 }
 
-.about{
-    width: 400px;
-    margin-bottom: 25px;
+.divider{
+    width: 85%;
+    height: 4px;
+    background-color: var(--primary-text-color);
+}
+
+.divider-point{
+    position: relative;
+    right: 7px;
+    bottom: 1px;
+}
+
+@media (max-width: 1120px) {
+    
+    #work-proj-highlight-bar,
+    #about-skill-bar{
+        width: 100vw;
+        background-color: rgba(0, 0, 0, .72);
+    }
+    
+    #work-proj-highlight-bar{
+        height: auto;
+    }
+
+
+    #about-skill-bar{
+    flex-direction: column;
+    margin: auto;
+    }
+
+    #about-wrapper,
+    #skill-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 90%;
+    padding: 15px;
+    color: var(--flag-extra-color);
+    }
+
+    #border-finish{
+        display: none;
+    }
+
+    .divider-point{
+        display: none;
+    }
+
+    #work-container,
+    #proj-container{
+        margin: 0;
+        padding: 25px;
+
+    }
+
+     #work-container h3,
+     #proj-container h3{
+        border-bottom: 1px solid var(--flag-extra-color);
+    }
+
+      #work-thumb-wrapper,
+      #proj-thumb-wrapper{
+        font-size: .7em;
+    }
+
+    #work-thumb-wrapper,
+    #proj-thumb-wrapper,
+    #work-container h3,
+    #proj-container h3{
+        flex-direction: row;
+        padding-bottom: 12px;
+        color: var(--flag-extra-color)
+    }
+
 }
